@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS Animations</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0a0a23;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .rotating-box {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-style: preserve-3d;
+            animation: rotate3D 8s infinite linear;
+        }
+
+        .side {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            backface-visibility: hidden;
+        }
+
+        /* 3D Cube Faces */
+        .side1 {
+            background-color: rgba(255, 99, 71, 0.8);
+            transform: translateZ(150px);
+        }
+
+        .side2 {
+            background-color: rgba(65, 105, 225, 0.8);
+            transform: rotateY(90deg) translateZ(150px);
+        }
+
+        .side3 {
+            background-color: rgba(60, 179, 113, 0.8);
+            transform: rotateY(180deg) translateZ(150px);
+        }
+
+        .side4 {
+            background-color: rgba(255, 215, 0, 0.8);
+            transform: rotateY(-90deg) translateZ(150px);
+        }
+
+        .side5 {
+            background-color: rgba(148, 0, 211, 0.8);
+            transform: rotateX(90deg) translateZ(150px);
+        }
+
+        .side6 {
+            background-color: rgba(0, 191, 255, 0.8);
+            transform: rotateX(-90deg) translateZ(150px);
+        }
+
+        @keyframes rotate3D {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        .floating-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: floating 5s infinite ease-in-out;
+            z-index: -1;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translate(-50%, -50%) translateY(0);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) translateY(-30px);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) translateY(0);
+            }
+        }
+
+        h1 {
+            color: white;
+            position: absolute;
+            bottom: 30px;
+            font-size: 28px;
+            animation: fadeText 3s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeText {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                width: 200px;
+                height: 200px;
+            }
+
+            h1 {
+                font-size: 20px;
+                color: white;
+                text-align: center;
+            }
+
+            .floating-circle {
+                width: 70px;
+                height: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container">        
+            <div class="rotating-box">
+                <div class="side side1">Side 1</div>
+                <div class="side side2">Side 2</div>
+                <div class="side side3">Side 3</div>
+                <div class="side side4">Side 4</div>
+                <div class="side side5">Side 5</div>
+                <div class="side side6">Side 6</div>
+            </div>
+            <div class="floating-circle"></div>
+        </div>
+        <h1>Creative 3D Cube Animation</h1>
+
+</body>
+
+</html>
